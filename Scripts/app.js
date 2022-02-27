@@ -6,7 +6,10 @@
     // Name: Marshall Presutto!
     // Student ID: 100775601
 
-//Date Completed: 2022-02-24
+//Date Completed: 2022-02-25
+
+
+
 (function(core){
 
     class User 
@@ -222,7 +225,6 @@
         validateField("emailAddress",/^(([a-zA-Z0-9._-]{2,})+@([a-zA-Z0-9.-]{2,})+\.[a-zA-Z]{2,10})/,"Please enter a valid Email Address.");
         //A password allowing for alphanumeric characters and select symbols with a minumum of 8
         validateField("password", /^[a-zA-Z0-9._-|!|?|#|$|@]{8,}$/, "Please enter a valid password. Must be a minimum of 8 characters.");
-        validateField("confirmPassword", /^[a-zA-Z0-9._-|!|?|#|$|@]{8,}$/, "Please enter a valid password. Must be a minimum of 8 characters.");
          
      }
  
