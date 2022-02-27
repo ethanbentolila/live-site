@@ -12,6 +12,9 @@
 
 (function(core){
 
+    /**
+     * User class will create a suer with a username, firstname, lastname, emailaddress and password
+     */
     class User 
     {
         // constructor
@@ -224,7 +227,7 @@
         //An email address with a minimum length of 8 and a requirement for the @ symbol
         validateField("emailAddress",/^(([a-zA-Z0-9._-]{2,})+@([a-zA-Z0-9.-]{2,})+\.[a-zA-Z]{2,10})/,"Please enter a valid Email Address.");
         //A password allowing for alphanumeric characters and select symbols with a minumum of 8
-        validateField("password", /^[a-zA-Z0-9._-|!|?|#|$|@]{8,}$/, "Please enter a valid password. Must be a minimum of 8 characters.");
+        validateField("password", /^[a-zA-Z0-9._-|!|?|#|$|@]{6,}$/, "Please enter a valid password. Must be a minimum of 8 characters.");
          
      }
  
