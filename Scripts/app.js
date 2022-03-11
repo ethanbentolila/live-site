@@ -171,6 +171,7 @@
         }
     }
     function DisplayEditPage() {
+        console.log("Edit Page");
         ContactFormValidation();
         let page = router.LinkData;
         switch (page) {
@@ -180,7 +181,7 @@
                     $("#editButton").html(`<i class="fas fa-plus-circle fa-lg"></i> Add`);
                     $("#editButton").on("click", (event) => {
                         event.preventDefault();
-                        let fullName = document.forms[0].fullname.value;
+                        let fullName = document.forms[0].fullName.value;
                         let contactNumber = document.forms[0].contactNumber.value;
                         let emailAddress = document.forms[0].emailAddress.value;
                         AddContact(fullName, contactNumber, emailAddress);

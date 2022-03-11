@@ -310,9 +310,12 @@
     }
 
 
-    function DisplayEditPage() : void
+    function DisplayEditPage(): void
     {
+        console.log("Edit Page");
+
         ContactFormValidation();
+
         let page = router.LinkData;
 
         switch(page)
@@ -320,16 +323,21 @@
             case "add":
                 {
                     $("main>h1").text("Add Contact");
+
                     $("#editButton").html(`<i class="fas fa-plus-circle fa-lg"></i> Add`);
-                    $("#editButton").on("click", (event) =>
+
+                    $("#editButton").on("click", (event) => 
                     {
                         event.preventDefault();
-                        //Add contact
-                        let fullName = document.forms[0].fullname.value as string;
+
+                        let fullName = document.forms[0].fullName.value as string;
                         let contactNumber = document.forms[0].contactNumber.value as string;
                         let emailAddress = document.forms[0].emailAddress.value as string;
-                        AddContact(fullName,contactNumber,emailAddress);
-                        //Refresh contact list page
+
+                        // Add Contact
+                        AddContact(fullName, contactNumber, emailAddress);
+
+                        // Refresh the contact-list page
                         LoadLink("contact-list");
                     });
 
@@ -342,40 +350,37 @@
                 break;
             default:
                 {
-
                     // get the contact info from localStorage
                     let contact = new core.Contact();
                     contact.deserialize(localStorage.getItem(page) as string);
-                    
-                    //display the contact info in the edit form
+
+                    // display the contact info in the edit form
                     $("#fullName").val(contact.FullName);
                     $("#contactNumber").val(contact.ContactNumber);
                     $("#emailAddress").val(contact.EmailAddress);
 
-
                     // when Edit is pressed - update the contact
-                    $("#editButton").on("click", (event) => 
+                    $("#editButton").on("click", (event)=>
                     {
                         event.preventDefault();
 
+                        // get any changes from the form
                         contact.FullName = $("#fullName").val() as string;
                         contact.ContactNumber = $("#contactNumber").val() as string;
-                        contact.EmailAddress = $("#emailAddress").val() as string ;
+                        contact.EmailAddress = $("#emailAddress").val() as string;
 
-                        //replace the item in localStorage
-                        localStorage.setItem(page,contact.serialize() as string);
+                        // replace the item in localStorage
+                        localStorage.setItem(page, contact.serialize() as string);
 
-                        //return to the contact list
+                        // return to the contact-list
                         LoadLink("contact-list");
-
                     });
-                    
+
                     $("#cancelButton").on("click", () =>
                     {
                         LoadLink("contact-list");
-
                     });
-
+                    
                 }
                 break;
         }
