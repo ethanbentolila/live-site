@@ -221,17 +221,17 @@
     function CheckLogin() {
         if (sessionStorage.getItem("user")) {
             $("#login").html(`<a id="logout" class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>`);
-            if (document.getElementById("taskList") == null) {
-                let Navbar = document.getElementsByTagName("ul")[0];
+            if (document.getElementById("taskList1") == null) {
                 let taskList = document.createElement("li");
-                taskList.innerHTML = `<a class="nav-link" id="taskList" data="task-list"><i class="fas fa-clipboard-list"></i> TaskList</a>`;
-                Navbar.insertBefore(taskList, document.getElementsByTagName("li")[5]);
+                taskList.setAttribute("class", "nav-item");
+                taskList.innerHTML = `<a class="nav-link" id="taskList1" data="task-list"><i class="fas fa-clipboard-list"></i> TaskList</a>`;
+                $("#login").before(taskList);
                 AddNavigationEvents();
             }
             $("#logout").on("click", function () {
                 sessionStorage.clear();
                 $("#login").html(`<a class="nav-link" data="login"><i class="fas fa-sign-in-alt"></i> Login</a>`);
-                $("#taskList").remove();
+                $("#taskList1").remove();
                 AddNavigationEvents();
                 LoadLink("login");
             });
@@ -323,8 +323,9 @@
                 if (event.key == "Enter") {
                     if (editText.val() != "" && editTextValue.charAt(0) != " ") {
                         editText.hide();
-                        $(this).parent().children("#taskText").text(editTextValue);
+                        $(this).parent().children("#taskText").text(editText.val());
                         messageArea.removeAttr("class").hide();
+                        $("#taskText").text(editText.val());
                     }
                     else {
                         editText.trigger("focus").trigger("select");

@@ -121,13 +121,7 @@
             $("header").html(html_data);
 
             AddNavigationEvents();
-            
-
-
             CheckLogin();
-
-
-
         });
     }
 
@@ -412,12 +406,13 @@
                 `<a id="logout" class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>`
             );
 
-            if(document.getElementById("taskList") == null) 
+            if(document.getElementById("taskList1") == null) 
             {
-            let Navbar = document.getElementsByTagName("ul")[0];
             let taskList = document.createElement("li");
-            taskList.innerHTML = `<a class="nav-link" id="taskList" data="task-list"><i class="fas fa-clipboard-list"></i> TaskList</a>`;
-            Navbar.insertBefore(taskList,document.getElementsByTagName("li")[5]);
+            taskList.setAttribute("class", "nav-item");
+            taskList.innerHTML = `<a class="nav-link" id="taskList1" data="task-list"><i class="fas fa-clipboard-list"></i> TaskList</a>`;
+            $("#login").before(taskList);
+
             AddNavigationEvents();
             }
 
@@ -431,7 +426,7 @@
                     `<a class="nav-link" data="login"><i class="fas fa-sign-in-alt"></i> Login</a>`
                 );
 
-                $("#taskList").remove();
+                $("#taskList1").remove();
 
                 AddNavigationEvents();
 
@@ -588,9 +583,10 @@
              {
                if(editText.val() != "" && editTextValue.charAt(0) != " ")
                {
-                 editText.hide();
-                 $(this).parent().children("#taskText").text(editTextValue);
-                 messageArea.removeAttr("class").hide();
+                editText.hide();
+                $(this).parent().children("#taskText").text(editText.val() as string);
+                messageArea.removeAttr("class").hide();
+                $("#taskText").text(editText.val() as string);
                }
                else
                {
