@@ -1,86 +1,100 @@
-
-namespace core 
+namespace core
 {
-    export class Contact 
+    export class Contact
     {
-        //private instance members
+        // private instance members
         private m_fullName: string;
         private m_contactNumber: string;
         private m_emailAddress: string;
 
-        //public properties (getters and setters)
-        public get FullName() : string
+        // public properties (getters and setters)
+        public get FullName(): string
         {
             return this.m_fullName;
         }
 
-        public set FullName(full_name:string) 
+        public set FullName(fullName: string)
         {
-            this.m_fullName = full_name;
+            this.m_fullName = fullName;
         }
 
-        public get ContactNumber(): string {
+        public get ContactNumber(): string
+        {
             return this.m_contactNumber;
         }
 
-        public set ContactNumber(contact_number: string) {
-            this.m_contactNumber = contact_number;
+        public set ContactNumber(contactNumber: string)
+        {
+            this.m_contactNumber = contactNumber;
         }
 
-        public get EmailAddress()
+        public get EmailAddress(): string
         {
             return this.m_emailAddress;
         }
 
-        public set EmailAddress(emailAddress) 
+        public set EmailAddress(emailAddress: string)
         {
             this.m_emailAddress = emailAddress;
         }
 
         // constructor
-        constructor(fullName: string = "", contactNumber: string = "", emailAddress: string = "") // default string paramter
+        constructor(fullName: string = "", contactNumber: string = "", emailAddress: string = "") // default parameters
         {
             this.m_fullName = fullName;
             this.m_contactNumber = contactNumber;
-            this.m_emailAddress = emailAddress
-
+            this.m_emailAddress = emailAddress;
         }
 
+        // public methods
+
         /**
-         * This method converts the object parameters into a comma-separated string
+         * This method converts the object's properties to a comma-separated string
+         *
          * @returns {(string | null)}
          */
         serialize(): string | null
         {
-            if(this.FullName !== "" && this.ContactNumber !== "" && this.EmailAddress !== "") {
+            if(this.FullName !== "" && this.ContactNumber !== "" && this.EmailAddress !== "")
+            {
                 return `${this.FullName},${this.ContactNumber},${this.EmailAddress}`;
             }
-            console.error("One or more properties of the Contact Object are missing or empty");
-            return null;
+            else
+            {
+                console.error("One or more properties of the Contact are missing or empty");
+                return null;
+            }
         }
 
         /**
-         * This method takes its string parameter and divides it into different properties
+         * This method separates the data string parameter into the object's properties
+         *
          * @param {string} data
-         * @returns {void} 
+         * @returns {void}
          */
-        deserialize(data: string): void
+        deserialize(data: string): void // assume that data is a comma-separated list of properties (strings)
         {
-            let propertyArray : string[] = data.split(",");
+            let propertyArray: string[] = data.split(",");
             this.FullName = propertyArray[0];
             this.ContactNumber = propertyArray[1];
             this.EmailAddress = propertyArray[2];
         }
-        //overridden methods
+
+        // public overrides
 
         /**
-         * This method overrides the built in tostring method and returns the values of the object properties
+         * This method overrides the built-in toString method 
+         * and returns a string that contains the values of the object's properties
          * @override
          * @returns {string}
          */
-        toString() : string
+        toString(): string
         {
-            return `Full Name: ${this.FullName}\nContact Number: ${this.ContactNumber}\nEmail Address: ${this.EmailAddress}`;
+            return `Full Name     : ${this.FullName}\nContact Number: ${this.ContactNumber}\nEmail Address : ${this.EmailAddress}`;
         }
     }
+
 }
+
+
+

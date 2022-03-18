@@ -1,9 +1,9 @@
 {
-  "name": "ice8",
+  "name": "webd6201-w2022-lab3",
   "version": "1.0.0",
-  "description": "ICE 8 for WEBD6201 in the Winter 2022 Semester",
+  "description": "starter project for lab3",
   "main": "index.js",
-  "author": "Ethan Bentolila",
+  "author": "Tom Tsiliopoulos",
   "license": "MIT",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
@@ -12,6 +12,6 @@
     "jquery": "^3.6.0"
   },
   "devDependencies": {
-    "@types/jquery": "^3.5.13"
+    "@types/jquery": "^3.5.14"
   }
 }
