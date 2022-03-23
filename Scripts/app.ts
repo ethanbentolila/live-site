@@ -586,7 +586,6 @@
                 editText.hide();
                 $(this).parent().children("#taskText").text(editText.val() as string);
                 messageArea.removeAttr("class").hide();
-                $("#taskText").text(editText.val() as string);
                }
                else
                {
